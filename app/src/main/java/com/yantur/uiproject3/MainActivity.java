@@ -11,11 +11,10 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity {
     private List<RowData> rowData;
     private ListView listView;
     private MyAdapter myAdapter;
-    private boolean checkUncheck = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +25,6 @@ public class MainActivity extends AppCompatActivity  {
         listView = (ListView) findViewById(R.id.listview);
         myAdapter = new MyAdapter(this, rowData);
         listView.setAdapter(myAdapter);
-        CheckBox checkbox = (CheckBox) findViewById(R.id.checkbox);
-
     }
 
     @Override

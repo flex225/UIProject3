@@ -29,16 +29,16 @@ public class MyAdapter extends ArrayAdapter<RowData> {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.list_row, null, true);
-        TextView txtTitle = (TextView) rowView.findViewById(R.id.text);
+        View rowView = inflater.inflate(R.layout.list_row, parent, false);
+        TextView textView = (TextView) rowView.findViewById(R.id.text);
         CardView cardView = (CardView) rowView.findViewById(R.id.cardview);
         final CheckBox checkBox = (CheckBox) rowView.findViewById(R.id.checkbox);
-        txtTitle.setTextColor(Color.BLACK);
+        textView.setTextColor(Color.BLACK);
         if (rowData.get(position).isHidden()) {
             cardView.setVisibility(View.GONE);
         }
         if (rowData.get(position).isColor()) {
-            txtTitle.setTextColor(Color.GRAY);
+            textView.setTextColor(Color.GRAY);
         }
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,8 +54,8 @@ public class MyAdapter extends ArrayAdapter<RowData> {
                 checkBox.setSelected(cb.isChecked());
             }
         });
-        txtTitle.setText(rowData.get(position).getTitle());
-        txtTitle.setOnLongClickListener(new View.OnLongClickListener() {
+        textView.setText(rowData.get(position).getTitle());
+        textView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 rowData.get(position).setHidden(true);
